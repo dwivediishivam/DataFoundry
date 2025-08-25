@@ -24,10 +24,11 @@ DataFoundry is an intelligent platform that provides data-driven insights and an
 
 ### Backend
 - **FastAPI** - High-performance Python web framework
-- **Google Gemini** - LLM for intelligent analysis
-- **Portia AI** - Multi-agent orchestration platform
+- **Google Gemini** - LLM for intelligent analysis and idea breakdown
+- **Portia AI** - Multi-agent orchestration and workflow management
+- **SerpAPI** - Real-time search data for market research
 - **HTTPX** - Async HTTP client for API integration
-- **Asyncio** - Concurrent execution
+- **Asyncio** - Concurrent execution of analysis agents
 - **Pydantic** - Data validation and serialization
 
 ## Quick Start
@@ -36,6 +37,8 @@ DataFoundry is an intelligent platform that provides data-driven insights and an
 - Node.js 18+ and npm
 - Python 3.8+
 - Google Gemini API key
+- Portia AI API key (optional - for enhanced agent orchestration)
+- SerpAPI key (optional - for real-time market data)
 
 ### 1. Clone and Setup
 
@@ -57,9 +60,11 @@ chmod +x start-backend.sh start-frontend.sh
 On first run, you'll need to add your API keys to `backend/.env`:
 
 ```env
+# Required
 GEMINI_API_KEY=your_gemini_api_key_here
-WORLD_BANK_API_KEY=your_world_bank_api_key_here
+PORTIA_API_KEY=your_portia_ai_api_key_here
 SERPAPI_KEY=your_serpapi_key_here
+WORLD_BANK_API_KEY=your_world_bank_api_key_here
 ```
 
 ### 3. Frontend Setup
@@ -94,21 +99,93 @@ An on-demand courier service using drones and small aircraft for same-day delive
 
 ### Agent System
 
-The backend uses Portia AI for multi-agent orchestration:
+DataFoundry uses a sophisticated multi-agent architecture with **Portia AI** orchestration:
 
-1. **Market Research Agent** - Analyzes market size, trends, and opportunities using specialized tools
-2. **Competitive Intelligence Agent** - Identifies competitors and market positioning  
-3. **Financial Analyst Agent** - Projects revenue, funding requirements, and ROI
-4. **Risk Assessment Agent** - Evaluates potential risks across multiple categories
-5. **Strategic Consultant Agent** - Synthesizes all data into actionable recommendations
+#### Portia AI Integration
 
-Each agent uses Portia AI's specialized tools for data gathering and analysis, working together in a coordinated workflow.
+**Portia AI** serves as the central orchestration platform that coordinates specialized agents for comprehensive startup analysis. The system leverages Portia's workflow management capabilities to execute complex, multi-step analysis processes.
+
+**Key Portia AI Features Used:**
+- **Agent Orchestration**: Coordinates multiple specialized agents in parallel and sequential workflows
+- **Task Management**: Manages complex analysis tasks with dependencies and context sharing
+- **Workflow Execution**: Handles timeout management, error recovery, and result aggregation
+- **Tool Integration**: Provides agents with specialized tools for market research, competitive analysis, and data gathering
+
+#### Specialized Agents
+
+1. **Market Research Agent** (`market_researcher`)
+   - **Role**: Market Research Analyst with 10+ years experience
+   - **Tools**: `market_data_api`, `trend_analysis`, `industry_reports`
+   - **Function**: Analyzes TAM/SAM/SOM, market trends, and growth opportunities using real-time data
+
+2. **Competitive Intelligence Agent** (`competitor_analyst`)
+   - **Role**: Competitive Intelligence Specialist
+   - **Tools**: `competitor_database`, `funding_tracker`, `market_share_analysis`
+   - **Function**: Identifies competitors, analyzes funding data, and assesses competitive threats
+
+3. **Financial Modeling Agent** (`financial_analyst`)
+   - **Role**: Senior Financial Analyst and Investment Expert
+   - **Tools**: `financial_modeling`, `valuation_tools`, `benchmark_data`
+   - **Function**: Creates realistic financial projections based on industry benchmarks
+
+4. **Risk Assessment Agent** (`risk_assessor`)
+   - **Role**: Risk Management Consultant
+   - **Tools**: `risk_database`, `regulatory_tracker`, `industry_risk_models`
+   - **Function**: Identifies market, operational, regulatory, and financial risks
+
+5. **Strategic Advisory Agent** (`strategic_advisor`)
+   - **Role**: Senior Strategic Business Consultant
+   - **Tools**: `synthesis_framework`, `decision_models`, `strategic_templates`
+   - **Function**: Synthesizes all analyses into actionable strategic recommendations
+
+#### Workflow Architecture
+
+```
+Portia AI Orchestrator
+├── LLM Breakdown (Gemini) → Idea Categorization
+├── Parallel Agent Execution
+│   ├── Market Research Agent → Real-time market data
+│   ├── Competitor Agent → SerpAPI + curated databases
+│   ├── Financial Agent → Industry benchmarks + projections
+│   └── Risk Agent → Multi-source risk analysis
+└── Strategic Synthesis → Final recommendations
+```
+
+#### Fallback System
+
+The system includes intelligent fallbacks:
+- **Primary**: Portia AI orchestrated workflow with specialized tools
+- **Secondary**: Direct agent execution with API integrations
+- **Tertiary**: Curated data with intelligent algorithms
+
+Each agent uses Portia AI's specialized tools for data gathering and analysis, working together in a coordinated workflow managed by the Portia orchestrator.
 
 ### Data Flow
 
 ```
-User Input → LLM Breakdown → Parallel Agent Execution → Data Aggregation → Insight Generation → Dashboard Visualization
+User Input 
+    ↓
+LLM Breakdown (Gemini)
+    ↓
+Portia AI Orchestrator
+    ├── Market Research Agent (SerpAPI + Industry Data)
+    ├── Competitor Agent (SerpAPI + Curated Databases)  
+    ├── Financial Agent (Industry Benchmarks)
+    └── Risk Agent (Multi-source Analysis)
+    ↓
+Data Aggregation & Synthesis
+    ↓
+Strategic Recommendations (Portia AI)
+    ↓
+Dashboard Visualization (Next.js + Recharts)
 ```
+
+#### API Integration Details
+
+- **Portia AI API**: `https://api.portia.dev/v1` - Workflow orchestration and agent management
+- **Google Gemini**: Idea breakdown and natural language processing
+- **SerpAPI**: Real-time search data for market research and competitor analysis
+- **Fallback Systems**: Curated databases and algorithmic analysis when APIs are unavailable
 
 ## API Endpoints
 
@@ -152,14 +229,79 @@ Analyzes a startup idea and returns comprehensive insights.
 }
 ```
 
+## Portia AI Configuration
+
+### Setting Up Portia AI
+
+1. **Get API Key**: Sign up at [Portia AI](https://portia.dev) and obtain your API key
+2. **Add to Environment**: Set `PORTIA_API_KEY` in your `backend/.env` file
+3. **Agent Configuration**: Agents are pre-configured with specialized roles and tools
+
+### Portia AI Workflow Structure
+
+The system uses Portia AI's workflow execution API with the following structure:
+
+```python
+{
+    "agents": [
+        {
+            "name": "market_researcher",
+            "role": "Market Research Analyst", 
+            "goal": "Analyze market opportunity and trends",
+            "backstory": "Expert with 10+ years in market analysis...",
+            "tools": ["market_data_api", "trend_analysis"]
+        }
+        # ... other agents
+    ],
+    "tasks": [
+        {
+            "description": "Analyze market size and growth for startup idea",
+            "agent": "market_researcher",
+            "expected_output": "Structured market analysis with TAM/SAM/SOM"
+        }
+        # ... other tasks
+    ],
+    "process": "sequential",
+    "timeout": 300
+}
+```
+
+### Monitoring Portia AI Execution
+
+- **Logs**: Check backend logs for Portia AI workflow status
+- **Fallback**: System automatically falls back to direct agents if Portia AI is unavailable
+- **Timeout**: 5-minute timeout for complex analyses
+
 ## Development
 
 ### Adding New Agents
 
-1. Create a new agent class in `backend/agents/`
+#### For Portia AI Integration:
+1. Define agent in `PortiaOrchestrator._create_agents()`:
+   ```python
+   PortiaAgent(
+       name="new_agent",
+       role="Agent Role",
+       goal="Agent objective", 
+       backstory="Agent expertise",
+       tools=["tool1", "tool2"]
+   )
+   ```
+
+2. Add corresponding task in `_create_analysis_workflow()`:
+   ```python
+   PortiaTask(
+       description="Task description",
+       agent="new_agent",
+       expected_output="Expected result format"
+   )
+   ```
+
+#### For Direct Agent Implementation:
+1. Create agent class in `backend/agents/`
 2. Implement the `analyze()` method
-3. Add the agent to the orchestrator
-4. Update the data aggregation logic
+3. Add to orchestrator fallback system
+4. Update data aggregation logic
 
 ### Extending Data Sources
 
