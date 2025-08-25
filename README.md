@@ -37,8 +37,8 @@ DataFoundry is an intelligent platform that provides data-driven insights and an
 - Node.js 18+ and npm
 - Python 3.8+
 - Google Gemini API key
-- Portia AI API key (optional - for enhanced agent orchestration)
-- SerpAPI key (optional - for real-time market data)
+- Portia AI API key (for enhanced agent orchestration)
+- SerpAPI key (for real-time market data)
 
 ### 1. Clone and Setup
 
