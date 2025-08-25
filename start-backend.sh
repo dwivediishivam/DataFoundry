@@ -16,7 +16,7 @@ source backend/venv/bin/activate
 
 # Install dependencies
 echo "Installing Python dependencies..."
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 
 # Check if .env file exists
 if [ ! -f "backend/.env" ]; then

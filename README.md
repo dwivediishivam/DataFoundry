@@ -25,8 +25,9 @@ DataFoundry is an intelligent platform that provides data-driven insights and an
 ### Backend
 - **FastAPI** - High-performance Python web framework
 - **Google Gemini** - LLM for intelligent analysis
-- **Portia SDK** - Agent orchestration (planned)
-- **Asyncio** - Concurrent agent execution
+- **Portia AI** - Multi-agent orchestration platform
+- **HTTPX** - Async HTTP client for API integration
+- **Asyncio** - Concurrent execution
 - **Pydantic** - Data validation and serialization
 
 ## Quick Start
@@ -93,14 +94,15 @@ An on-demand courier service using drones and small aircraft for same-day delive
 
 ### Agent System
 
-The backend uses a multi-agent architecture:
+The backend uses Portia AI for multi-agent orchestration:
 
-1. **LLM Breakdown Agent** - Analyzes and categorizes the startup idea
-2. **Market Analysis Agent** - Researches market size and trends
-3. **Competitor Agent** - Identifies competition and market positioning
-4. **Financial Agent** - Projects revenue, costs, and funding requirements
-5. **Risk Agent** - Evaluates potential risks and challenges
-6. **Insight Agent** - Synthesizes data into actionable recommendations
+1. **Market Research Agent** - Analyzes market size, trends, and opportunities using specialized tools
+2. **Competitive Intelligence Agent** - Identifies competitors and market positioning  
+3. **Financial Analyst Agent** - Projects revenue, funding requirements, and ROI
+4. **Risk Assessment Agent** - Evaluates potential risks across multiple categories
+5. **Strategic Consultant Agent** - Synthesizes all data into actionable recommendations
+
+Each agent uses Portia AI's specialized tools for data gathering and analysis, working together in a coordinated workflow.
 
 ### Data Flow
 

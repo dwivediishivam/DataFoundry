@@ -11,10 +11,10 @@ def test_api():
     url = "http://localhost:8000/analyze"
     
     test_idea = """
-    An on-demand courier service using drones and small aircraft for same-day delivery in urban areas. 
-    The platform would connect businesses needing urgent deliveries with certified pilots operating 
-    lightweight aircraft. Target customers include medical facilities, legal firms, and e-commerce 
-    businesses requiring rapid document or small package delivery within 50-mile radius of major cities.
+    A SaaS platform that uses AI to automatically generate and optimize social media content for small businesses. 
+    The platform analyzes brand voice, target audience, and trending topics to create personalized posts across 
+    multiple platforms, with built-in scheduling and performance analytics. Target customers are small to medium 
+    businesses who lack dedicated marketing teams but need consistent social media presence.
     """
     
     payload = {"idea": test_idea.strip()}
