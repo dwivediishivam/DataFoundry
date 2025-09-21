@@ -1,0 +1,40 @@
+{
+  "placeholderImages": [
+    {
+      "id": "innovatech",
+      "description": "Innovatech company logo",
+      "imageUrl": "https://picsum.photos/seed/1/200/200",
+      "imageHint": "tech logo"
+    },
+    {
+      "id": "quantumleap",
+      "description": "QuantumLeap company logo",
+      "imageUrl": "https://picsum.photos/seed/2/200/200",
+      "imageHint": "science logo"
+    },
+    {
+      "id": "ecowave",
+      "description": "EcoWave Solutions company logo",
+      "imageUrl": "https://picsum.photos/seed/3/200/200",
+      "imageHint": "nature logo"
+    },
+    {
+      "id": "healthplus",
+      "description": "HealthPlus AI company logo",
+      "imageUrl": "https://picsum.photos/seed/4/200/200",
+      "imageHint": "health logo"
+    },
+    {
+      "id": "finpal",
+      "description": "FinPal company logo",
+      "imageUrl": "https://picsum.photos/seed/5/200/200",
+      "imageHint": "finance logo"
+    },
+    {
+      "id": "nextgen",
+      "description": "NextGen Robotics company logo",
+      "imageUrl": "https://picsum.photos/seed/6/200/200",
+      "imageHint": "robot logo"
+    }
+  ]
+}
