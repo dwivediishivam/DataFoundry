@@ -1,4 +1,4 @@
-// File: /Users/janeshkapoor/Desktop/Janesh/Projects/Datafoundry/app/layout.tsx
+// File: /Users/dwivediishivam/Downloads/DataFoundry/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
